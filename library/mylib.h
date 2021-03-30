@@ -19,8 +19,14 @@ namespace files
         else {print("[ERRORE] Failed to read file"); return NULL;}
     }
 
-    void append_write(std::string path)
+    void append_write(std::string path,std::string content)
     {
-        
+        std::ofstream towrite(path.c_str(), std::ofstream::app);
+        if(towrite.is_open())
+        {
+            towrite<<content;
+            towrite.close(); return;
+        }
+        else {print("[ERRORE] Failed to write on file "); return;}
     }
 }
