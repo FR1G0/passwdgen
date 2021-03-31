@@ -36,21 +36,36 @@ namespace scroll
     struct node
     {
         std::string content;
-        int pos=0, digit=0;
+        int pos=0, digit=-1;
         node * next = NULL;
+        char Getchar() { elevate(); return content.at(digit);}
+        void elevate() { digit++; if(digit>content.size()){digit=-1; return;}}
     };
     void circle(node * temp, node * start)
     {
         if(temp->next == NULL) {temp->next = start; return;}
         circle(temp->next,start);
     }
-    
-
+    void push(std::string newcontent, node * temp)
+    {
+        if(temp->next == NULL)
+        {
+            node * newnode = new node();
+            newnode->content = newcontent; newnode->pos = temp->pos+1;
+            temp->next = newnode; return;
+        }
+        push(newcontent,temp->next);
+    }
+    node * Get(node * start, int frompos)
+    {
+        if(start->pos == frompos) {return start;}
+        return Get(start->next,frompos);
+    }
 }
 
 namespace resolve
 {
+    std::string simple_string_node_ram(node * temp,)
     
-
 
 }
