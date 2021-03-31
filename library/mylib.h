@@ -36,12 +36,20 @@ namespace scroll
 {
     struct node
     {
-        node(std::string temp) {content = temp;}
         std::string content = "";
-        int pos=0, digit=-1;
+        int pos=0, digit=0;
         node * next = NULL;
-        char Getchar() { elevate(); return content.at(digit);}
-        void elevate() { digit++; if(digit>content.size()){digit=-1; next->elevate(); return;}return;}
+        /*fucked*/
+        std::string Get_content() {elevate(); return content;}
+        void elevate() 
+        {
+            digit++;
+            if(digit>=content.size())
+            {
+                digit=0; next->elevate(); return;
+            }
+            return;
+        }
     };
     int node_size(node * temp)
     {
@@ -55,11 +63,11 @@ namespace scroll
     }
     void push(std::string newcontent, node * temp)
     {
-        if(temp->next == NULL)
+        if(temp->content=="")
         {
-            node * newnode = new node(newcontent);
-            newnode->pos = temp->pos+1;
-            temp->next = newnode; return;
+            temp->content = newcontent;
+            node* newnode = new node; newnode->pos = temp->pos+1;
+            temp->next = newnode; return; 
         }
         push(newcontent,temp->next);
     }
@@ -80,10 +88,10 @@ namespace scroll
         std::cout<<temp->content<<std::endl;
         printall(temp->next);
     }
-    std::string Getall_nodeChars(node * temp)
+    std::string assemble(node * temp)
     {
-        if(temp == NULL) {return "\n";}
-        return Getall_nodeChars(temp->next)+temp->Getchar();
+        if(temp->next==NULL) {return "\n";}
+        return temp->content.at(temp->digit)+assemble(temp->next);
     }
 }
 
@@ -91,12 +99,14 @@ namespace resolve
 {
     std::string simple_string_node_ram(scroll::node * temp)
     { 
+        std::string result=" ";
         int res = pow(node_size(temp),temp->content.size());
         for(int contatore=0;contatore<res;contatore++)
         {
-            std::cout<<"\n"<<scroll::Getall_nodeChars(temp);
+            std::cout<<scroll::assemble(temp);
+            temp->elevate();
         }
-        return " ";
+        return result;
     }
     
 }
