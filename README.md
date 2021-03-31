@@ -1,7 +1,6 @@
 ## passwdgen
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/oooo-kill-em.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://forthebadge.com)
+-----
 This little tool can generate any combination of passwords with input,
 the purpose, however, isn't limited to generating passwords, this tool
 can also be used to generate links of any sort
