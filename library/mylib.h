@@ -1,5 +1,9 @@
-#include"includes.h"
+#include<iostream>
+#include<string.h>
+#include<fstream>
+#include<vector>
 
+#define print(var) std::cout<<var<<std::endl;
 
 namespace files
 {
@@ -26,4 +30,27 @@ namespace files
         }
         else {print("[ERRORE] Failed to write on file "); return;}
     }
+}
+namespace scroll
+{
+    struct node
+    {
+        std::string content;
+        int pos=0, digit=0;
+        node * next = NULL;
+    };
+    void circle(node * temp, node * start)
+    {
+        if(temp->next == NULL) {temp->next = start; return;}
+        circle(temp->next,start);
+    }
+    
+
+}
+
+namespace resolve
+{
+    
+
+
 }

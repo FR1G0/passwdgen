@@ -1,6 +1,5 @@
 #include<iostream>
-#include<vector>
-#include"library/mylib.h"
+
 
 
 int main () 
@@ -9,6 +8,7 @@ int main ()
     std::cout<<"How many digits do you want? >>>"; std::cin>>input;
     std::string line = " "; line.resize(input);
     std::vector<std::string> instances(input,files::get_characters("sample/numbers.txt")); 
+    
     
     
 
