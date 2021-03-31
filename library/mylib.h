@@ -1,8 +1,5 @@
-#include<iostream>
-#include<string.h>
-#include<fstream>
+#include"includes.h"
 
-#define print(var) std::cout<<var<<std::endl;
 
 namespace files
 {

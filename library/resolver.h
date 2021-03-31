@@ -1,7 +1,6 @@
 #include"includes.h"
 
-
-namespace sort
+namespace resolve
 {
     
 }
