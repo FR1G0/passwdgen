@@ -1,20 +1,24 @@
 #include<iostream>
-#include<vector>     // std::cout, std::dec, std::hex, std::oct
+#include<vector>
 #include"library/mylib.h"
+
+struct scroll
+{
+    std::string digit;
+    int pos=0;  
+};
 
 int main () 
 {
-    int input; std::string line=" ";
+    int input;
     std::cout<<"How many digits do you want? >>>"; std::cin>>input;
-    std::string instances = files::get_characters("sample/numbers.txt");
-    for(size_t digits=0; digits<input;digits++)
+    std::string line = " "; line.resize(input);
+    std::vector<std::string> instances(input,files::get_characters("sample/numbers.txt")); 
+    for(size_t digit=0;digit<input;digit++)
     {
-        for(size_t stringchars=0;stringchars<instances.size();stringchars++)
-        {
-            line.at(digits) = instances.at(stringchars);
-            files::append_write("out/sample.txt",line+"\n");
-        }
-        line+=" ";
+        
     }
+    
+
     return 0;
 }
