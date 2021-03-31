@@ -76,6 +76,11 @@ namespace scroll
         if(start->pos == frompos) {return start;}
         return Get(start->next,frompos);
     }
+    node * Getlast(node * start)
+    {
+        if(start->next==NULL) {return start;}
+        return Getlast(start->next);
+    }
     void vector_to_node(std::vector<std::string> temp, node* nodes)
     {
         int size_vec = temp.size();
@@ -99,9 +104,9 @@ namespace resolve
 {
     std::string simple_string_node_ram(scroll::node * temp)
     { 
-        std::string result=" ";
-        int res = pow(node_size(temp),temp->content.size());
-        for(int contatore=0;contatore<res;contatore++)
+        std::string result="";
+        scroll::node * last = scroll::Getlast(temp);
+        while(last->digit<=last->content.size())
         {
             std::cout<<scroll::assemble(temp);
             temp->elevate();
