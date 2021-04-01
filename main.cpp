@@ -11,7 +11,7 @@ int main ()
     data::node* newnode = new data::node();
     data::vector_to_node(instances,newnode);
     //data::printall(newnode);
-    std::cout<<resolve::simple_string_node_ram(newnode);
+    files::append_write("out/sample.txt",resolve::simple_string_node_ram(newnode));
     
 
     return 0;

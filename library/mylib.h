@@ -106,7 +106,7 @@ namespace resolve
         data::node * last = data::Getlast(temp); int lastsize=last->content.size()-1;
         while(last->digit!=lastsize)
         {
-            std::cout<<"\t"<<data::assemble(temp);
+            result+=data::assemble(temp);
             temp->elevate();
         }
         return result;
