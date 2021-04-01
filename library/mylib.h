@@ -32,7 +32,7 @@ namespace files
         else {print("[ERRORE] Failed to write on file "); return;}
     }
 }
-namespace scroll
+namespace data
 {
     struct node
     {
@@ -40,15 +40,13 @@ namespace scroll
         int pos=0, digit=0;
         node * next = NULL;
         /*fucked*/
-        std::string Get_content() {elevate(); return content;}
         void elevate() 
         {
             digit++;
-            if(digit>=content.size())
+            if(digit==content.size())
             {
-                digit=0; next->elevate(); return;
+                digit=0; if(next != NULL){next->elevate();} 
             }
-            return;
         }
     };
     int node_size(node * temp)
@@ -78,7 +76,7 @@ namespace scroll
     }
     node * Getlast(node * start)
     {
-        if(start->next==NULL) {return start;}
+        if(start->next->next==NULL) {return start;}
         return Getlast(start->next);
     }
     void vector_to_node(std::vector<std::string> temp, node* nodes)
@@ -102,13 +100,13 @@ namespace scroll
 
 namespace resolve
 {
-    std::string simple_string_node_ram(scroll::node * temp)
+    std::string simple_string_node_ram(data::node * temp)
     { 
-        std::string result="";
-        scroll::node * last = scroll::Getlast(temp);
-        while(last->digit<=last->content.size())
+        std::string result=" ";
+        data::node * last = data::Getlast(temp); int lastsize=last->content.size()-1;
+        while(last->digit!=lastsize)
         {
-            std::cout<<scroll::assemble(temp);
+            std::cout<<"\t"<<data::assemble(temp);
             temp->elevate();
         }
         return result;
