@@ -11,7 +11,7 @@ int main ()
     data::node* newnode = new data::node();
     data::vector_to_node(instances,newnode);
     //data::printall(newnode);
-    files::append_write("out/sample.txt",resolve::simple_string_node_ram(newnode));
+    resolve::simple_string_node_hybrid(newnode,"out/sample.txt",50000);
     
 
     return 0;

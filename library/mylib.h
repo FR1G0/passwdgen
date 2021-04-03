@@ -3,6 +3,7 @@
 #include<fstream>
 #include<vector>
 #include<math.h>
+#include<thread>
 
 #define print(var) std::cout<<var<<std::endl;
 
@@ -100,9 +101,10 @@ namespace data
 
 namespace resolve
 {
+    /*RAM-intense, very fast*/
     std::string simple_string_node_ram(data::node * temp)
     { 
-        std::string result=" ";
+        std::string result="";
         data::node * last = data::Getlast(temp); int lastsize=last->content.size()-1;
         while(last->digit!=lastsize)
         {
@@ -111,5 +113,25 @@ namespace resolve
         }
         return result;
     }
-    
+    /*Slow because it saves it every time*/
+    void simple_string_node_drive(data::node * temp, std::string path)
+    {
+        data::node * last = data::Getlast(temp); int lastsize=last->content.size()-1;
+        while(last->digit!=lastsize)
+        {
+            files::append_write(path,data::assemble(temp));
+            temp->elevate();
+        }
+    }
+    void simple_string_node_hybrid(data::node * temp, std::string path, int perwrite)
+    {
+        std::string result=""; data::node *last = data::Getlast(temp); int lastsize=last->content.size()-1, counter=0;
+        while(last->digit!=lastsize)
+        {
+            result+=data::assemble(temp);
+            temp->elevate(); counter++;
+            if(counter==perwrite) {files::append_write(path,result); result=""; counter=0;}
+        }
+    }
+
 }
