@@ -1,38 +1,5 @@
-#include<iostream>
-#include<string.h>
-#include<fstream>
-#include<vector>
-#include<math.h>
-#include<thread>
+#include"includes.h"
 
-#define print(var) std::cout<<var<<std::endl;
-
-namespace files
-{
-    std::string get_characters(std::string path)
-    {
-        std::string toreturn;
-        std::ifstream readthis; readthis.open(path.c_str());
-        if(readthis.is_open())
-        {
-            std::string line;
-            while(getline(readthis,line)){toreturn +=line;}
-            readthis.close(); return toreturn;
-        }
-        else {print("[ERROR] Failed to read file"); return NULL;}
-    }
-
-    void append_write(std::string path,std::string content)
-    {
-        std::ofstream towrite(path.c_str(), std::ofstream::app);
-        if(towrite.is_open())
-        {
-            towrite<<content;
-            towrite.close(); return;
-        }
-        else {print("[ERROR] Failed to write on file "); return;}
-    }
-}
 namespace data
 {
     struct node
@@ -94,20 +61,4 @@ namespace data
         if(temp->next==NULL) {return "\n";}
         return temp->content.at(temp->digit)+assemble(temp->next);
     }
-}
-
-namespace resolve
-{   
-    void simple_string_node_hybrid(data::node * temp, std::string path, int perwrite)
-    {
-        std::string result=""; data::node *last = data::Getlast(temp); int lastsize=last->content.size()-1, counter=0;
-        while(last->digit!=lastsize)
-        {
-            result+=data::assemble(temp);
-            temp->elevate(); counter++;
-            if(counter==perwrite) {files::append_write(path,result); result=""; counter=0;}
-        }
-        if(counter<=perwrite) {files::append_write(path,result);}
-    }
-
 }
