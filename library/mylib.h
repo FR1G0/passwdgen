@@ -19,7 +19,7 @@ namespace files
             while(getline(readthis,line)){toreturn +=line;}
             readthis.close(); return toreturn;
         }
-        else {print("[ERRORE] Failed to read file"); return NULL;}
+        else {print("[ERROR] Failed to read file"); return NULL;}
     }
 
     void append_write(std::string path,std::string content)
@@ -30,7 +30,7 @@ namespace files
             towrite<<content;
             towrite.close(); return;
         }
-        else {print("[ERRORE] Failed to write on file "); return;}
+        else {print("[ERROR] Failed to write on file "); return;}
     }
 }
 namespace data
@@ -50,15 +50,17 @@ namespace data
             }
         }
     };
+    struct vector_node
+    {
+        std::vector<std::string> content;
+        int pos=0, digit=0;
+        vector_node * next = NULL;
+
+    };
     int node_size(node * temp)
     {
         if(temp->next == NULL) {return temp->pos;}
         return node_size(temp->next);
-    }
-    void circle(node * temp, node * start)
-    {
-        if(temp->next == NULL) {temp->next = start; return;}
-        circle(temp->next,start);
     }
     void push(std::string newcontent, node * temp)
     {
@@ -69,11 +71,6 @@ namespace data
             temp->next = newnode; return; 
         }
         push(newcontent,temp->next);
-    }
-    node * Get(node * start, int frompos)
-    {
-        if(start->pos == frompos) {return start;}
-        return Get(start->next,frompos);
     }
     node * Getlast(node * start)
     {
@@ -100,29 +97,7 @@ namespace data
 }
 
 namespace resolve
-{
-    /*RAM-intense, very fast*/
-    std::string simple_string_node_ram(data::node * temp)
-    { 
-        std::string result="";
-        data::node * last = data::Getlast(temp); int lastsize=last->content.size()-1;
-        while(last->digit!=lastsize)
-        {
-            result+=data::assemble(temp);
-            temp->elevate();
-        }
-        return result;
-    }
-    /*Slow because it saves it every time*/
-    void simple_string_node_drive(data::node * temp, std::string path)
-    {
-        data::node * last = data::Getlast(temp); int lastsize=last->content.size()-1;
-        while(last->digit!=lastsize)
-        {
-            files::append_write(path,data::assemble(temp));
-            temp->elevate();
-        }
-    }
+{   
     void simple_string_node_hybrid(data::node * temp, std::string path, int perwrite)
     {
         std::string result=""; data::node *last = data::Getlast(temp); int lastsize=last->content.size()-1, counter=0;
@@ -132,6 +107,7 @@ namespace resolve
             temp->elevate(); counter++;
             if(counter==perwrite) {files::append_write(path,result); result=""; counter=0;}
         }
+        if(counter<=perwrite) {files::append_write(path,result);}
     }
 
 }
