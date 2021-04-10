@@ -23,7 +23,23 @@ namespace data
         int pos=0, digit=0;
         vector_node * next = NULL;
     };
+    struct list
+    {
+        std::vector<std::string> content;
+        void showall()
+        {
+            std::cout<<"[";
+            for(size_t counter=0;counter<content.size();counter++)
+            {
+                std::cout<<content.at(counter)<<",";
+            }
+            std::cout<<"]";
+        }
+    };
 
+
+
+/*--------------------------METHODS--------------------------*/
     /*Returns the side of the node*/
     int node_size(node * temp)
     {
@@ -80,10 +96,11 @@ namespace data
         }
         vpush(content,temp->next);
     }
-    std::string vassemble(vector_node * temp)
+    std::string assemble(vector_node * temp)
     {
         if(temp->next==NULL) {return "\n";}
-        return temp->content.at(temp->digit)+vassemble(temp->next);
+        return temp->content.at(temp->digit)+assemble(temp->next);
     }
     
 }
+

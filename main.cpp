@@ -4,13 +4,7 @@
 
 int main () 
 {
-    int input;
-    std::cout<<"How many digits do you want? >>>"; std::cin>>input;
-    std::vector<std::string> instances(input,files::get_characters("sample/letters.txt")); 
-    data::node* newnode = new data::node();
-    data::vector_to_node(instances,newnode);
-    //data::printall(newnode);
-    resolve::simple_string_node_hybrid(newnode,"out/sample.txt",50000);
+    std::string whatever = files::get_characters("sample/list.txt");
     
 
     return 0;

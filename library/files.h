@@ -25,4 +25,5 @@ namespace files
         }
         else {print("[ERROR] Failed to write on file "); return;}
     }
+    
 }
