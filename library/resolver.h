@@ -2,6 +2,10 @@
 #include"files.h"
 #include"data.h"
 
+/*
+The resolver basically takes care of the "finale product"
+*/
+
 namespace resolve
 {   
     void simple_string_node_hybrid(data::node * temp, std::string path, int perwrite)

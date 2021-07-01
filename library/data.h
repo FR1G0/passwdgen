@@ -64,12 +64,30 @@ namespace data
         if(start->next->next==NULL) {return start;}
         return Getlast(start->next);
     }
-    /*inserts the strings inside the vector into the node*/
+    /*CONVERTERS*/
     void vector_to_node(std::vector<std::string> temp, node* nodes)
     {
         int size_vec = temp.size();
         for(size_t x=0;x<size_vec;x++) { push(temp[x],nodes);}
         return;
+    }
+    list string_to_list(std::string content)
+    {
+        std::vector<std::string> thelist; list endproduct;
+        int start=0,end=0;
+        while(content.at(end)!=']') /*untile it hits the end*/
+        {
+            for(int counter=start;counter<content.size()-start;counter++)
+            {
+                if(content.at(counter)==',')
+                {
+                    end=counter;
+                    thelist.push_back(content.substr(start+1,end));
+                    start=end;
+                }
+            }
+        }
+        return endproduct;
     }
     /*prints all content of */
     void printall(node * temp)
@@ -96,6 +114,7 @@ namespace data
         }
         vpush(content,temp->next);
     }
+
     std::string assemble(vector_node * temp)
     {
         if(temp->next==NULL) {return "\n";}
