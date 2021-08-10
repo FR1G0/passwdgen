@@ -7,7 +7,8 @@
 [![OS](https://img.shields.io/badge/os-linux-lime.svg)](https://shields.io/)
 [![Python](https://img.shields.io/badge/python-3.8.10-blue.svg)](https://shields.io/)
 [![Releases](https://img.shields.io/badge/Releases-0-grey.svg)](https://shields.io/)
-
+[![Issues](https://img.shields.io/github/issues/FR1G0/passwdgen)](https://shields.io/)
+[![Issues](https://img.shields.io/github/stars/FR1G0/passwdgen?color=yellow)](https://shields.io/)
 
 -----
 This little tool can generate any combination of passwords with input,
