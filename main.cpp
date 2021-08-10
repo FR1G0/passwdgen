@@ -4,7 +4,8 @@
 
 int main () 
 {
-    std::string whatever = files::get_characters("sample/list.txt");
+    
+    std::string cont = files.get_content("sample/list.txt");
     
 
     return 0;

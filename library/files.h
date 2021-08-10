@@ -1,8 +1,9 @@
 #include"includes.h"
 
-namespace files
+class
 {
-    std::string get_characters(std::string path)
+    public:
+    std::string get_content(std::string path)
     {
         std::string toreturn;
         std::ifstream readthis; readthis.open(path.c_str());
@@ -12,7 +13,7 @@ namespace files
             while(getline(readthis,line)){toreturn +=line;}
             readthis.close(); return toreturn;
         }
-        else {print("[ERROR] Failed to read file"); return NULL;}
+        else {print("[ERROR] Failed to read file"); return "";}
     }
 
     void append_write(std::string path,std::string content)
@@ -24,6 +25,5 @@ namespace files
             towrite.close(); return;
         }
         else {print("[ERROR] Failed to write on file "); return;}
-    }
-    
-}
+    }   
+}files;

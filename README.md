@@ -1,5 +1,8 @@
 ## passwdgen
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
+<br>
+[![Generic badge](https://img.shields.io/badge/OWNER-FR1G0-violet.svg)](https://shields.io/)
+
 -----
 This little tool can generate any combination of passwords with input,
 the purpose, however, isn't limited to generating passwords, this tool
