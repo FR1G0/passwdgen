@@ -1,4 +1,5 @@
 .vscode
 main.sh
 temp.txt
+main
 out/sample.txt
