@@ -1,14 +1,9 @@
 #include"includes.h"
-#include"files.h"
-#include"data.h"
-
-/*
-The resolver basically takes care of the "finale product"
-*/
+//resolvers are methods that allow the processing of the information in the nodes
 
 namespace resolve
 {   
-
+    /*this resolver collects a section of data and writes it to data*/
     
 
 }

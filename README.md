@@ -22,4 +22,5 @@ can also be used to generate links of any sort
 <li>Advanced generation</li>
 <li>List of words generation</li>
 <li>Special characters generation</li>
+<li>Connect Python to C++</li>
 </ul>

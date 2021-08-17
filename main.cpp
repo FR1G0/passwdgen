@@ -1,5 +1,5 @@
 #include<iostream>
-#include"library/resolver.h"
+#include"library/all.h"
 
 /*
     using namespace std;
@@ -8,8 +8,8 @@
 
 int main () 
 {
-    std::string cont = files.get_content("sample/list.txt");
-    data::node* newnode = new data::node(files.get_content("sample/letters.txt"));
+    std::string cont = files.get_content("assets/list.txt");
+    node* newnode = new node(files.get_content("sample/letters.txt"));
     
 
     return 0;
