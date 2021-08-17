@@ -12,5 +12,5 @@ ________________________________________________________________________________
                             
                             SELECT AN OPTION
                             1  Classic passwdgen
-                            2  Complex passwdgen 
+                            2  Online passwdgen 
                             3  Advanced passwdgen

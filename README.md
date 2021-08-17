@@ -16,7 +16,11 @@ This little tool can generate any combination of passwords with input,
 the purpose, however, isn't limited to generating passwords, this tool
 can also be used to generate links of any sort
 
-## These are some of the features i'm looking forward to implementing
+## Usage
+    python3 passwdgen.py
+
+
+### These are some of the features i'm looking forward to implementing
 <ul>
 <li>Simple generation</li>
 <li>Advanced generation</li>
