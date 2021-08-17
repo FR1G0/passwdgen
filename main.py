@@ -15,6 +15,6 @@ def main(req):
         print(requesthtml(sample))
 
 if __name__ == "__main__": 
+    print("\033[1;36;1m"+open("other/intro.txt").read());
     
-    main(input())
     

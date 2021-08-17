@@ -1,10 +1,6 @@
 #include<iostream>
 #include"library/all.h"
 
-/*
-    using namespace std;
-    using namespace data;
-*/
 
 int main () 
 {
